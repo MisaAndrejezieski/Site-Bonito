@@ -16,7 +16,12 @@ function loadPage(url) {
                 throw new Error('Conteúdo da página não encontrado.');
             }
 
-            document.querySelector('main').innerHTML = newContent;
+            // Adiciona animação de fade-out antes de trocar o conteúdo
+            document.querySelector('main').style.opacity = 0;
+            setTimeout(() => {
+                document.querySelector('main').innerHTML = newContent;
+                document.querySelector('main').style.opacity = 1; // Fade-in
+            }, 300); // Tempo da animação de fade-out
             history.pushState({}, '', url);
         })
         .catch(error => {
@@ -37,6 +42,17 @@ document.querySelectorAll('nav ul li a').forEach(link => {
 // Atualiza o conteúdo ao navegar no histórico
 window.addEventListener('popstate', () => {
     loadPage(window.location.pathname);
+});
+
+// Efeito de hover nos links do menu
+document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        link.style.transform = 'scale(1.1)';
+        link.style.transition = 'transform 0.3s ease';
+    });
+    link.addEventListener('mouseleave', () => {
+        link.style.transform = 'scale(1)';
+    });
 });
 
 // Rolagem suave para links âncora
