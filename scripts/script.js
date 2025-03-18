@@ -1,4 +1,4 @@
-// Exemplo de interação ao passar o mouse
+// Interação ao passar o mouse nos links
 const links = document.querySelectorAll('nav ul li a');
 
 links.forEach(link => {
