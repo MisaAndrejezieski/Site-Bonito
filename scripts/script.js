@@ -28,12 +28,16 @@ function showPage(index) {
 function loadBackground() {
     const imageNumber = (currentPageIndex % totalImages) + 1; // Alterna entre as 12 imagens
     const imageUrl = `images/a${imageNumber.toString().padStart(3, '0')}.jpg`;
+    console.log(`Carregando imagem: ${imageUrl}`); // Log para depuração
 
     // Pré-carrega a imagem para evitar atrasos
     const img = new Image();
     img.src = imageUrl;
     img.onload = () => {
         background.style.backgroundImage = `url('${imageUrl}')`;
+    };
+    img.onerror = () => {
+        console.error(`Erro ao carregar a imagem: ${imageUrl}`); // Log de erro
     };
 }
 
