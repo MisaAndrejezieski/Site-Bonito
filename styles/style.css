@@ -16,6 +16,7 @@ body {
     background-position: center; /* Centralizar a imagem */
     background-repeat: no-repeat; /* Evitar repetição */
     z-index: -1; /* Fica atrás das páginas */
+    transition: background-image 0.5s ease-in-out; /* Transição suave */
 }
 
 .container {
