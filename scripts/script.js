@@ -1,12 +1,28 @@
 // Função para carregar conteúdo dinamicamente
 function loadPage(url) {
     fetch(url)
-        .then(response => response.text())
-        .then(data => {
-            document.querySelector('main').innerHTML = data;
-            history.pushState({}, '', url); // Atualiza a URL sem recarregar
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao carregar a página');
+            }
+            return response.text();
         })
-        .catch(error => console.error('Erro ao carregar a página:', error));
+        .then(data => {
+            // Extrai apenas o conteúdo do <main> da página carregada
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(data, 'text/html');
+            const newContent = doc.querySelector('main').innerHTML;
+
+            // Atualiza o conteúdo da página atual
+            document.querySelector('main').innerHTML = newContent;
+
+            // Atualiza a URL no navegador sem recarregar a página
+            history.pushState({}, '', url);
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Erro ao carregar a página. Verifique o console para mais detalhes.');
+        });
 }
 
 // Intercepta cliques nos links do menu
@@ -29,9 +45,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
-        targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 });
