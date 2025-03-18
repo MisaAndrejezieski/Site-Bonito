@@ -9,21 +9,29 @@ body {
     position: relative;
     height: 100vh;
     width: 100%;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
 }
 
 .page {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    min-height: 100vh;
-    scroll-snap-align: start;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(100%);
+    overflow-y: auto; /* Permite scroll interno */
+}
+
+.page.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .content {
