@@ -18,7 +18,13 @@ function showPage(index) {
 function loadBackground() {
     const imageNumber = (currentPageIndex % totalImages) + 1; // Alterna entre as 12 imagens
     const imageUrl = `images/a${imageNumber.toString().padStart(3, '0')}.jpg`;
-    background.style.backgroundImage = `url('${imageUrl}')`;
+
+    // Pré-carrega a imagem para evitar atrasos
+    const img = new Image();
+    img.src = imageUrl;
+    img.onload = () => {
+        background.style.backgroundImage = `url('${imageUrl}')`;
+    };
 }
 
 // Controle de scroll personalizado
