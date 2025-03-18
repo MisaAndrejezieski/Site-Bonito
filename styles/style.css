@@ -18,7 +18,6 @@ body {
     width: 100%;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -32,6 +31,12 @@ body {
 .page.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+.content {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
 }
 
 /* Estilos para a galeria de imagens */
@@ -57,11 +62,13 @@ body {
 form {
     max-width: 400px;
     margin: 0 auto;
+    text-align: left;
 }
 
 form label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 form input, form textarea {
@@ -70,6 +77,7 @@ form input, form textarea {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 16px;
 }
 
 form button {
@@ -84,4 +92,24 @@ form button {
 
 form button:hover {
     background-color: #555;
+}
+
+/* Estilos para artigos de notícias */
+article {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+article h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+article p {
+    font-size: 16px;
+    color: #666;
 }
