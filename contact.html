@@ -1,37 +1,118 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Bonito - Contatos</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="index.html" class="hover-effect">Home</a></li>
-            <li><a href="gallery.html" class="hover-effect">Imagens</a></li>
-            <li><a href="news.html" class="hover-effect">Notícias</a></li>
-            <li><a href="contact.html" class="hover-effect">Contatos</a></li>
-        </ul>
-    </nav>
-    <main>
-        <section id="contact">
-            <h1>Entre em Contato</h1>
-            <form>
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Mensagem:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-                
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
-    </main>
-    <script src="scripts/script.js"></script>
-</body>
-</html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #ff6347;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff6347;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+main {
+    padding: 100px 20px 20px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animação de fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Estilos para a galeria de imagens */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.image-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para o formulário de contato */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #555;
+}
