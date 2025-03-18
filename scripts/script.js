@@ -2,6 +2,8 @@ let currentPageIndex = 0;
 const pages = document.querySelectorAll('.page');
 const totalImages = 12; // Número total de imagens
 const background = document.querySelector('.background');
+const navLinks = document.querySelectorAll('.nav-link');
+let timeout;
 
 // Função para mostrar a página atual
 function showPage(index) {
@@ -10,6 +12,14 @@ function showPage(index) {
             page.classList.add('active');
         } else {
             page.classList.remove('active');
+        }
+    });
+    // Atualiza o link ativo no menu
+    navLinks.forEach((link, i) => {
+        if (i === index) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
         }
     });
 }
@@ -27,26 +37,56 @@ function loadBackground() {
     };
 }
 
-// Controle de scroll personalizado
+// Controle de scroll personalizado com debounce
 window.addEventListener('wheel', (e) => {
-    const currentPage = pages[currentPageIndex];
-    const isScrollingDown = e.deltaY > 0;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+        const currentPage = pages[currentPageIndex];
+        const isScrollingDown = e.deltaY > 0;
+        const isAtTop = currentPage.scrollTop === 0;
+        const isAtBottom = currentPage.scrollTop + currentPage.clientHeight >= currentPage.scrollHeight;
 
-    // Verifica se o usuário está no topo ou no final da página
-    const isAtTop = currentPage.scrollTop === 0;
-    const isAtBottom = currentPage.scrollTop + currentPage.clientHeight >= currentPage.scrollHeight;
+        if (isScrollingDown && isAtBottom) {
+            currentPageIndex = Math.min(currentPageIndex + 1, pages.length - 1);
+            showPage(currentPageIndex);
+            loadBackground();
+        } else if (!isScrollingDown && isAtTop) {
+            currentPageIndex = Math.max(currentPageIndex - 1, 0);
+            showPage(currentPageIndex);
+            loadBackground();
+        }
+    }, 100); // Ajuste o tempo conforme necessário
+});
 
-    if (isScrollingDown && isAtBottom) {
-        // Scroll para baixo: vai para a próxima página
-        currentPageIndex = Math.min(currentPageIndex + 1, pages.length - 1);
+// Suporte para dispositivos touch
+let startY;
+window.addEventListener('touchstart', (e) => {
+    startY = e.touches[0].clientY;
+});
+window.addEventListener('touchend', (e) => {
+    const endY = e.changedTouches[0].clientY;
+    const deltaY = startY - endY;
+    if (Math.abs(deltaY) > 50) { // Sensibilidade do swipe
+        if (deltaY > 0) {
+            // Swipe para cima
+            currentPageIndex = Math.min(currentPageIndex + 1, pages.length - 1);
+        } else {
+            // Swipe para baixo
+            currentPageIndex = Math.max(currentPageIndex - 1, 0);
+        }
         showPage(currentPageIndex);
-        loadBackground(); // Atualiza o fundo ao trocar de página
-    } else if (!isScrollingDown && isAtTop) {
-        // Scroll para cima: volta para a página anterior
-        currentPageIndex = Math.max(currentPageIndex - 1, 0);
-        showPage(currentPageIndex);
-        loadBackground(); // Atualiza o fundo ao trocar de página
+        loadBackground();
     }
+});
+
+// Navegação pelo menu
+navLinks.forEach((link, index) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentPageIndex = index;
+        showPage(currentPageIndex);
+        loadBackground();
+    });
 });
 
 // Inicialização
