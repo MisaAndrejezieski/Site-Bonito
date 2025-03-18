@@ -27,6 +27,8 @@ body {
     transition: opacity 0.8s ease, transform 0.8s ease;
     transform: translateY(100%);
     overflow-y: auto; /* Permite scroll interno */
+    background-size: cover; /* Cobrir toda a área */
+    background-position: center; /* Centralizar a imagem */
 }
 
 .page.active {
@@ -38,25 +40,9 @@ body {
     max-width: 800px;
     width: 100%;
     padding: 20px;
-}
-
-/* Estilos para a galeria de imagens */
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 10px;
-    padding: 20px;
-}
-
-.image-grid img {
-    width: 100%;
-    height: auto;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente */
     border-radius: 8px;
-    transition: transform 0.3s ease;
-}
-
-.image-grid img:hover {
-    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para o formulário de contato */
