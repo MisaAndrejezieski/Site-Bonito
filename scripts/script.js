@@ -1,25 +1,23 @@
-// Rolagem suave para links âncora
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+// Função para carregar imagens dinamicamente
+function loadImages() {
+    const imageGrid = document.querySelector('.image-grid');
+    if (!imageGrid) return; // Se não houver galeria, sai da função
 
-// Atualiza a URL ao rolar
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('.page');
-    sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
-            history.replaceState(null, '', `#${section.id}`);
-        }
-    });
-});
+    // Número total de imagens (ajuste conforme necessário)
+    const totalImages = 20; // Exemplo: 20 imagens
+
+    for (let i = 1; i <= totalImages; i++) {
+        const imageNumber = i.toString().padStart(3, '0'); // Formata para a001, a002, etc.
+        const imageUrl = `images/a${imageNumber}.jpg`;
+
+        // Cria um elemento de imagem e adiciona à galeria
+        const imgElement = document.createElement('img');
+        imgElement.src = imageUrl;
+        imgElement.alt = `Imagem ${imageNumber}`;
+        imgElement.loading = "lazy"; // Carregamento otimizado
+        imageGrid.appendChild(imgElement);
+    }
+}
+
+// Executa a função ao carregar a página
+window.addEventListener('load', loadImages);
