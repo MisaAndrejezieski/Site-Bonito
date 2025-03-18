@@ -16,8 +16,8 @@ function showPage(index) {
 // Função para carregar imagens de fundo dinamicamente
 function loadBackgrounds() {
     pages.forEach((page, index) => {
-        const imageNumber = (index + 1).toString().padStart(3, '0'); // a001, a002, etc.
-        const imageUrl = `images/a${imageNumber}.jpg`;
+        const imageNumber = (index % totalImages) + 1; // Alterna entre as 12 imagens
+        const imageUrl = `images/a${imageNumber.toString().padStart(3, '0')}.jpg`;
         page.style.backgroundImage = `url('${imageUrl}')`;
     });
 }
@@ -35,10 +35,12 @@ window.addEventListener('wheel', (e) => {
         // Scroll para baixo: vai para a próxima página
         currentPageIndex = Math.min(currentPageIndex + 1, pages.length - 1);
         showPage(currentPageIndex);
+        loadBackgrounds(); // Atualiza o fundo ao trocar de página
     } else if (!isScrollingDown && isAtTop) {
         // Scroll para cima: volta para a página anterior
         currentPageIndex = Math.max(currentPageIndex - 1, 0);
         showPage(currentPageIndex);
+        loadBackgrounds(); // Atualiza o fundo ao trocar de página
     }
 });
 
