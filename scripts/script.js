@@ -1,6 +1,7 @@
 let currentPageIndex = 0;
 const pages = document.querySelectorAll('.page');
 const totalImages = 12; // Número total de imagens
+const background = document.querySelector('.background');
 
 // Função para mostrar a página atual
 function showPage(index) {
@@ -14,12 +15,10 @@ function showPage(index) {
 }
 
 // Função para carregar imagens de fundo dinamicamente
-function loadBackgrounds() {
-    pages.forEach((page, index) => {
-        const imageNumber = (index % totalImages) + 1; // Alterna entre as 12 imagens
-        const imageUrl = `images/a${imageNumber.toString().padStart(3, '0')}.jpg`;
-        page.style.backgroundImage = `url('${imageUrl}')`;
-    });
+function loadBackground() {
+    const imageNumber = (currentPageIndex % totalImages) + 1; // Alterna entre as 12 imagens
+    const imageUrl = `images/a${imageNumber.toString().padStart(3, '0')}.jpg`;
+    background.style.backgroundImage = `url('${imageUrl}')`;
 }
 
 // Controle de scroll personalizado
@@ -35,17 +34,17 @@ window.addEventListener('wheel', (e) => {
         // Scroll para baixo: vai para a próxima página
         currentPageIndex = Math.min(currentPageIndex + 1, pages.length - 1);
         showPage(currentPageIndex);
-        loadBackgrounds(); // Atualiza o fundo ao trocar de página
+        loadBackground(); // Atualiza o fundo ao trocar de página
     } else if (!isScrollingDown && isAtTop) {
         // Scroll para cima: volta para a página anterior
         currentPageIndex = Math.max(currentPageIndex - 1, 0);
         showPage(currentPageIndex);
-        loadBackgrounds(); // Atualiza o fundo ao trocar de página
+        loadBackground(); // Atualiza o fundo ao trocar de página
     }
 });
 
 // Inicialização
 window.addEventListener('load', () => {
     showPage(currentPageIndex);
-    loadBackgrounds();
+    loadBackground();
 });
