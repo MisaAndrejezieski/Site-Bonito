@@ -1,23 +1,53 @@
+let currentPageIndex = 0;
+const pages = document.querySelectorAll('.page');
+
+// Função para mostrar a página atual
+function showPage(index) {
+    pages.forEach((page, i) => {
+        if (i === index) {
+            page.classList.add('active');
+        } else {
+            page.classList.remove('active');
+        }
+    });
+}
+
 // Função para carregar imagens dinamicamente
 function loadImages() {
     const imageGrid = document.querySelector('.image-grid');
-    if (!imageGrid) return; // Se não houver galeria, sai da função
+    if (!imageGrid) return;
 
-    // Número total de imagens (ajuste conforme necessário)
-    const totalImages = 20; // Exemplo: 20 imagens
+    const totalImages = 20; // Número total de imagens
 
     for (let i = 1; i <= totalImages; i++) {
-        const imageNumber = i.toString().padStart(3, '0'); // Formata para a001, a002, etc.
+        const imageNumber = i.toString().padStart(3, '0');
         const imageUrl = `images/a${imageNumber}.jpg`;
 
-        // Cria um elemento de imagem e adiciona à galeria
         const imgElement = document.createElement('img');
         imgElement.src = imageUrl;
         imgElement.alt = `Imagem ${imageNumber}`;
-        imgElement.loading = "lazy"; // Carregamento otimizado
+        imgElement.loading = "lazy";
         imageGrid.appendChild(imgElement);
     }
 }
 
-// Executa a função ao carregar a página
-window.addEventListener('load', loadImages);
+// Controle de scroll personalizado
+window.addEventListener('wheel', (e) => {
+    e.preventDefault();
+
+    if (e.deltaY > 0) {
+        // Scroll para baixo
+        currentPageIndex = Math.min(currentPageIndex + 1, pages.length - 1);
+    } else {
+        // Scroll para cima
+        currentPageIndex = Math.max(currentPageIndex - 1, 0);
+    }
+
+    showPage(currentPageIndex);
+});
+
+// Inicialização
+window.addEventListener('load', () => {
+    showPage(currentPageIndex);
+    loadImages();
+});
