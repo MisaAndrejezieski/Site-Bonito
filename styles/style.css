@@ -14,7 +14,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8); /* Fundo escuro com transparência */
     backdrop-filter: blur(10px); /* Efeito de vidro fosco */
     z-index: 1000;
     padding: 10px 0;
@@ -96,7 +96,7 @@ body {
     max-width: 800px;
     width: 100%;
     padding: 40px;
-    background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente */
+    background: rgba(0, 0, 0, 0.7); /* Fundo escuro com transparência */
     border-radius: 16px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(10px); /* Efeito de vidro fosco */
@@ -136,7 +136,7 @@ form input, form textarea {
     border: 2px solid #ffcc00;
     border-radius: 8px;
     font-size: 16px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1); /* Fundo claro com transparência */
     color: #ffffff;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -166,7 +166,7 @@ form button:hover {
 
 /* Estilos para artigos de notícias */
 article {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1); /* Fundo claro com transparência */
     padding: 20px;
     border-radius: 12px;
     margin-bottom: 20px;
