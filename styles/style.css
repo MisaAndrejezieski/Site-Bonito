@@ -15,10 +15,24 @@ body {
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.8); /* Fundo escuro com transparência */
-    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
     z-index: 1000;
     padding: 10px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Fallback para navegadores que não suportam backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+    .navbar {
+        background: rgba(0, 0, 0, 0.9); /* Fundo mais opaco para fallback */
+    }
+}
+
+/* Efeito de vidro fosco para navegadores que suportam */
+@supports (backdrop-filter: blur(10px)) {
+    .navbar {
+        backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.6); /* Fundo menos opaco com blur */
+    }
 }
 
 .navbar ul {
@@ -99,7 +113,21 @@ body {
     background: rgba(0, 0, 0, 0.7); /* Fundo escuro com transparência */
     border-radius: 16px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+}
+
+/* Fallback para navegadores que não suportam backdrop-filter */
+@supports not (backdrop-filter: blur(10px)) {
+    .content {
+        background: rgba(0, 0, 0, 0.8); /* Fundo mais opaco para fallback */
+    }
+}
+
+/* Efeito de vidro fosco para navegadores que suportam */
+@supports (backdrop-filter: blur(10px)) {
+    .content {
+        backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.5); /* Fundo menos opaco com blur */
+    }
 }
 
 .content h1 {
