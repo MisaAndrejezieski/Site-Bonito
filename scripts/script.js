@@ -3,25 +3,25 @@ function loadPage(url) {
     fetch(url)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Erro ao carregar a página');
+                throw new Error(`Erro ao carregar a página: ${response.statusText}`);
             }
             return response.text();
         })
         .then(data => {
-            // Extrai apenas o conteúdo do <main> da página carregada
             const parser = new DOMParser();
             const doc = parser.parseFromString(data, 'text/html');
             const newContent = doc.querySelector('main').innerHTML;
 
-            // Atualiza o conteúdo da página atual
-            document.querySelector('main').innerHTML = newContent;
+            if (!newContent) {
+                throw new Error('Conteúdo da página não encontrado.');
+            }
 
-            // Atualiza a URL no navegador sem recarregar a página
+            document.querySelector('main').innerHTML = newContent;
             history.pushState({}, '', url);
         })
         .catch(error => {
             console.error('Erro:', error);
-            alert('Erro ao carregar a página. Verifique o console para mais detalhes.');
+            alert(`Erro ao carregar a página: ${error.message}`);
         });
 }
 
