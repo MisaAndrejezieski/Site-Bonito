@@ -29,6 +29,7 @@ body {
     overflow-y: auto; /* Permite scroll interno */
     background-size: cover; /* Cobrir toda a área */
     background-position: center; /* Centralizar a imagem */
+    background-repeat: no-repeat; /* Evitar repetição */
 }
 
 .page.active {
