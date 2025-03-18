@@ -1,5 +1,6 @@
 let currentPageIndex = 0;
 const pages = document.querySelectorAll('.page');
+const totalImages = 12; // Número total de imagens
 
 // Função para mostrar a página atual
 function showPage(index) {
@@ -12,23 +13,13 @@ function showPage(index) {
     });
 }
 
-// Função para carregar imagens dinamicamente
-function loadImages() {
-    const imageGrid = document.querySelector('.image-grid');
-    if (!imageGrid) return;
-
-    const totalImages = 12; // Número total de imagens
-
-    for (let i = 1; i <= totalImages; i++) {
-        const imageNumber = i.toString().padStart(3, '0');
+// Função para carregar imagens de fundo dinamicamente
+function loadBackgrounds() {
+    pages.forEach((page, index) => {
+        const imageNumber = (index + 1).toString().padStart(3, '0'); // a001, a002, etc.
         const imageUrl = `images/a${imageNumber}.jpg`;
-
-        const imgElement = document.createElement('img');
-        imgElement.src = imageUrl;
-        imgElement.alt = `Imagem ${imageNumber}`;
-        imgElement.loading = "lazy";
-        imageGrid.appendChild(imgElement);
-    }
+        page.style.backgroundImage = `url('${imageUrl}')`;
+    });
 }
 
 // Controle de scroll personalizado
@@ -54,5 +45,5 @@ window.addEventListener('wheel', (e) => {
 // Inicialização
 window.addEventListener('load', () => {
     showPage(currentPageIndex);
-    loadImages();
+    loadBackgrounds();
 });
