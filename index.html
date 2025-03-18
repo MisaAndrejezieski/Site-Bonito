@@ -8,44 +8,57 @@
 </head>
 <body>
     <div class="container">
+        <!-- Página Home -->
         <section id="home" class="page active">
-            <h1>Bem-vindo ao Site Bonito!</h1>
-            <p>Este é um site incrível com efeitos especiais.</p>
-        </section>
-
-        <section id="gallery" class="page">
-            <h1>Galeria de Imagens</h1>
-            <div class="image-grid">
-                <!-- As imagens serão carregadas aqui pelo JavaScript -->
+            <div class="content">
+                <h1>Bem-vindo ao Site Bonito!</h1>
+                <p>Este é um site incrível com efeitos especiais. Role para baixo para explorar.</p>
+                <p>Conteúdo fictício: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
         </section>
 
-        <section id="news" class="page">
-            <h1>Últimas Notícias</h1>
-            <article>
-                <h2>Título da Notícia 1</h2>
-                <p>Descrição da notícia 1.</p>
-            </article>
-            <article>
-                <h2>Título da Notícia 2</h2>
-                <p>Descrição da notícia 2.</p>
-            </article>
+        <!-- Página Galeria -->
+        <section id="gallery" class="page">
+            <div class="content">
+                <h1>Galeria de Imagens</h1>
+                <div class="image-grid">
+                    <!-- As imagens serão carregadas aqui pelo JavaScript -->
+                </div>
+            </div>
         </section>
 
+        <!-- Página Notícias -->
+        <section id="news" class="page">
+            <div class="content">
+                <h1>Últimas Notícias</h1>
+                <article>
+                    <h2>Notícia 1: Lançamento do Novo Produto</h2>
+                    <p>Descrição da notícia 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </article>
+                <article>
+                    <h2>Notícia 2: Evento de Tecnologia</h2>
+                    <p>Descrição da notícia 2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Página Contatos -->
         <section id="contact" class="page">
-            <h1>Entre em Contato</h1>
-            <form>
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Mensagem:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-                
-                <button type="submit">Enviar</button>
-            </form>
+            <div class="content">
+                <h1>Entre em Contato</h1>
+                <form>
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
         </section>
     </div>
 
