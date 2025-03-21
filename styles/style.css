@@ -1,4 +1,20 @@
 /* Estilos Gerais */
+:root {
+    --primary-color: #ffcc00;
+    --background-color: #1a1a1a;
+    --text-color: #ffffff;
+    --hover-color: #ff9900;
+}
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: var(--background-color);
+    color: var(--text-color);
+}
+
 body {
     font-family: 'Poppins', Arial, sans-serif;
     margin: 0;
