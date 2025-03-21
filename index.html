@@ -3,68 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site Bonito - Um site incrível com efeitos especiais e design moderno.">
+    <meta name="keywords" content="site, bonito, design, efeitos, moderno">
+    <meta name="author" content="Seu Nome">
     <title>Site Bonito</title>
     <link rel="stylesheet" href="styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Plano de fundo central fixo -->
     <div class="background"></div>
-
-    <!-- Menu de Navegação Fixo -->
     <nav class="navbar">
         <ul>
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#news" class="nav-link">Notícias</a></li>
-            <li><a href="#contact" class="nav-link">Contato</a></li>
+            <li><a href="#home" class="nav-link" aria-label="Home">Home</a></li>
+            <li><a href="#news" class="nav-link" aria-label="Notícias">Notícias</a></li>
+            <li><a href="#contact" class="nav-link" aria-label="Contato">Contato</a></li>
         </ul>
     </nav>
-
     <div class="container">
-        <!-- Página Home -->
         <section id="home" class="page active">
             <div class="content">
                 <h1>Bem-vindo ao Site Bonito!</h1>
                 <p>Este é um site incrível com efeitos especiais. Role para baixo para explorar.</p>
-                <p>Conteúdo fictício: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
         </section>
-
-        <!-- Página Notícias -->
         <section id="news" class="page">
             <div class="content">
                 <h1>Últimas Notícias</h1>
                 <article>
                     <h2>Notícia 1: Lançamento do Novo Produto</h2>
-                    <p>Descrição da notícia 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p>Descrição da notícia 1.</p>
                 </article>
                 <article>
                     <h2>Notícia 2: Evento de Tecnologia</h2>
-                    <p>Descrição da notícia 2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+                    <p>Descrição da notícia 2.</p>
                 </article>
             </div>
         </section>
-
-        <!-- Página Contatos -->
         <section id="contact" class="page">
             <div class="content">
                 <h1>Entre em Contato</h1>
                 <form>
                     <label for="name">Nome:</label>
                     <input type="text" id="name" name="name" required>
-                    
                     <label for="email">E-mail:</label>
                     <input type="email" id="email" name="email" required>
-                    
                     <label for="message">Mensagem:</label>
                     <textarea id="message" name="message" rows="5" required></textarea>
-                    
                     <button type="submit">Enviar</button>
                 </form>
             </div>
         </section>
     </div>
-
     <script src="scripts/script.js"></script>
 </body>
 </html>
